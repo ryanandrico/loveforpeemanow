@@ -58,9 +58,6 @@
     .open-btn:hover {
       transform: scale(1.04);
     }
-    .open-btn:active {
-      transform: translateY(2px) scale(.99);
-    }
     .reveal {
       margin-top: 30px;
       display: none;
@@ -71,21 +68,11 @@
       width: 350px; max-width: 70%;
       border-radius: 16px;
       box-shadow: 0 14px 46px rgba(200,80,130,0.18);
-      transform-origin: center center;
       animation: bouquetPop .7s cubic-bezier(.2,.9,.3,1) forwards;
     }
     @keyframes bouquetPop {
       from { opacity: 0; transform: scale(.6) translateY(20px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .pulse {
-      animation: heartbeat 1.4s ease-in-out infinite;
-    }
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      30% { transform: scale(1.05); }
-      60% { transform: scale(0.98); }
-      100% { transform: scale(1); }
     }
     .message {
       display: none;
@@ -93,9 +80,6 @@
       font-size: 22px;
       color: var(--text);
       font-weight: 700;
-      background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
-      padding: 16px 22px;
-      border-radius: 14px;
       animation: textFade .9s ease forwards .15s;
     }
     @keyframes textFade {
@@ -104,128 +88,66 @@
     }
     .petal {
       position: fixed;
-      left: 50%;
       top: -10px;
+      width: 16px; height: 20px;
+      border-radius: 50%;
+      background: pink;
+      opacity: 0.8;
       pointer-events: none;
-      width: 20px; height: 26px;
-      border-radius: 50% 50% 40% 40%;
-      background: linear-gradient(180deg, #ffd6e6, #ffbcd1);
-      opacity: 0.9;
-      transform-origin: center top;
-      z-index: 6;
       animation: fall linear forwards;
-      filter: drop-shadow(0 4px 6px rgba(150,50,100,0.15));
     }
     @keyframes fall {
       to {
-        transform: translate3d(var(--tx,0px), 110vh, var(--tz,0px)) rotate(var(--rot,360deg)) scale(var(--scale,1));
-        opacity: 0.02;
+        transform: translate3d(var(--x,0px), 100vh, 0) rotate(360deg);
+        opacity: 0;
       }
-    }
-    .footer {
-      margin-top: 18px;
-      color: #8a335b;
-      font-size: 14px;
-    }
-    @media (max-width: 520px) {
-      .card { padding: 20px; }
-      .bouquet { width: 86%; }
-      .message { font-size: 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="card" role="main" aria-labelledby="title">
-    <h1 id="title">เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
-    <p class="subtitle">กดแล้วฟังเพลง แล้วรับช่อดอกไม้จากใจของเค้า 🌸</p>
-    <button class="open-btn" id="openBtn">กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
+  <div class="card">
+    <h1>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
+    <p class="subtitle">กดปุ่มนี้สิ แล้วฟังเพลงจากใจของเค้า 🌸</p>
+    <button class="open-btn" id="openBtn">💝 กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
+
     <div class="reveal" id="reveal">
-      <img id="bouquetImg" class="bouquet pulse" src="https://i.imgur.com/REPLACE_THIS_WITH_YOUR_IMAGE.png" alt="ช่อดอกไม้สีชมพู">
+      <img class="bouquet" src="https://i.imgur.com/Y6XfHBg.jpeg" alt="ช่อดอกไม้">
       <div class="message" id="msg">
         ขอโทษนะครับที่ทำให้พี่มะนาวเสียใจ<br>
         เค้ารักพี่มะนาวไม่แพ้ใครเลยนะ 💖
       </div>
     </div>
-    <div class="footer">เปิดมาแล้วอย่าลืมบอกรักพี่มะนาวด้วยนะ ❤️</div>
   </div>
 
   <audio id="bgAudio" src="https://files.catbox.moe/xstwaf.mp3" preload="auto"></audio>
 
   <script>
-    const IMAGE_URL = "https://i.imgur.com/Y6XfHBg.jpeg"; // replace with your direct image link
-    document.getElementById('bouquetImg').src = IMAGE_URL;
-
     const btn = document.getElementById('openBtn');
     const reveal = document.getElementById('reveal');
     const msg = document.getElementById('msg');
     const audio = document.getElementById('bgAudio');
-    let played = false;
 
     btn.addEventListener('click', () => {
-      if (played) return;
-      played = true;
-
-      btn.style.transition = 'opacity .3s';
-      btn.style.opacity = 0;
-      setTimeout(()=> btn.style.display = 'none', 400);
-
+      btn.style.display = 'none';
       reveal.style.display = 'flex';
+      setTimeout(() => msg.style.display = 'block', 800);
+      audio.play().catch(() => console.log("Autoplay blocked"));
 
-      setTimeout(()=> {
-        msg.style.display = 'block';
-      }, 700);
-
-      audio.play().catch(err => {
-        console.warn("Autoplay failed:", err);
-      });
-
-      startPetals(30);
-    });
-
-    function startPetals(count){
-      const colors = [
-        'linear-gradient(180deg,#ffd6e6,#ffbcd1)',
-        'linear-gradient(180deg,#ffd0e7,#ff9fcf)',
-        'linear-gradient(180deg,#ffe6f2,#ffc6e3)'
-      ];
-      for(let i=0; i<count; i++){
-        const pet = document.createElement('div');
-        pet.className = 'petal';
-        const x = Math.floor(Math.random()*120) - 10;
-        const tx = (Math.random()*140 - 70) + 'vw';
-        const rot = Math.floor(Math.random()*720) + 'deg';
-        const dur = (5 + Math.random()*7).toFixed(2) + 's';
-        const delay = (Math.random()*1.8).toFixed(2) + 's';
-        const scale = (0.7 + Math.random()*1.1).toFixed(2);
-
-        pet.style.left = Math.floor(Math.random()*100) + 'vw';
-        pet.style.top  = '-6vh';
-        pet.style.background = colors[Math.floor(Math.random()*colors.length)];
-        pet.style.width  = (12 + Math.random()*18) + 'px';
-        pet.style.height = (14 + Math.random()*26) + 'px';
-        pet.style.opacity = (0.7 + Math.random()*0.3);
-        pet.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`;
-        pet.style.animationDuration = dur;
-        pet.style.animationDelay = delay;
-        pet.style.setProperty('--tx', tx);
-        pet.style.setProperty('--rot', rot);
-        pet.style.setProperty('--scale', scale);
-        pet.style.zIndex = 6;
-
-        document.body.appendChild(pet);
-
-        setTimeout(()=>{
-          try { pet.remove(); } catch(e) {}
-        }, (parseFloat(dur)+parseFloat(delay)+0.9)*1000);
+      for (let i = 0; i < 15; i++) {
+        createPetal();
       }
-      setTimeout(()=> startPetals(Math.max(8, Math.floor(count*0.6))), 1300);
-      setTimeout(()=> startPetals(Math.max(5, Math.floor(count*0.4))), 2900);
-    }
-
-    btn.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
     });
 
+    function createPetal() {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.background = `rgba(255, ${150 + Math.random()*50}, ${180 + Math.random()*60}, 0.9)`;
+      p.style.animationDuration = (6 + Math.random() * 5) + 's';
+      p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 11000);
+    }
   </script>
 </body>
 </html>
