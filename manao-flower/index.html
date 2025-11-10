@@ -131,7 +131,8 @@
       btn.style.display = 'none';
       reveal.style.display = 'flex';
       setTimeout(() => msg.style.display = 'block', 800);
-      audio.play().catch(() => console.log("Autoplay blocked"));
+      audio.currentTime = 63; // start at 1:03
+audio.play().catch(() => console.log("Autoplay blocked"));
 
       for (let i = 0; i < 15; i++) {
         createPetal();
