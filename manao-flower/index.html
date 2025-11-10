@@ -1,229 +1,231 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</title>
-<style>
-  /* --- Base --- */
-  :root{
-    --bg1: #fff0f6;
-    --bg2: #ffe6f2;
-    --accent: #ff3b7a;
-    --rosegold: #d28a7a;
-    --text: #7a0b3a;
-  }
-  html,body{height:100%;margin:0;font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;}
-  body{
-    background: linear-gradient(180deg,var(--bg1),var(--bg2));
-    display:flex;align-items:center;justify-content:center;flex-direction:column;
-    overflow:hidden;padding:20px;
-  }
-
-  /* --- Center card --- */
-  .card{
-    width:100%;max-width:920px;background:rgba(255,255,255,0.6);backdrop-filter: blur(6px);
-    border-radius:22px;padding:36px;box-shadow:0 10px 40px rgba(160,60,120,0.12);text-align:center;position:relative;
-  }
-
-  h1{margin:0 0 8px;font-size:22px;color:var(--text);font-weight:700;letter-spacing:0.2px}
-  p.subtitle{margin:0 0 18px;color:#9b3a66;font-weight:500}
-
-  /* --- Button --- */
-  .open-btn{
-    appearance:none;border:0;cursor:pointer;padding:14px 22px;border-radius:16px;
-    background: linear-gradient(90deg,var(--accent),#ff6aa8);
-    color:white;font-size:18px;font-weight:700;box-shadow:0 8px 26px rgba(255,90,150,0.18);
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .open-btn:active{transform:translateY(2px) scale(.99)}
-  .open-btn:hover{transform:scale(1.03)}
-
-  /* --- Bouquet container --- */
-  .reveal{
-    margin-top:22px;display:none;align-items:center;flex-direction:column;
-  }
-  .bouquet{
-    width:320px;max-width:70%;border-radius:16px;box-shadow:0 12px 40px rgba(200,80,130,0.18);
-    transform-origin:center center;
-    animation: bouquetPop .7s cubic-bezier(.2,.9,.3,1) forwards;
-  }
-  @keyframes bouquetPop{
-    from{opacity:0; transform:scale(.6) translateY(20px);}
-    to{opacity:1; transform:scale(1) translateY(0);}
-  }
-
-  /* heartbeat pulse */
-  .pulse { animation: heartbeat 1.3s ease-in-out infinite; }
-  @keyframes heartbeat{
-    0%{transform:scale(1)}
-    30%{transform:scale(1.05)}
-    60%{transform:scale(0.98)}
-    100%{transform:scale(1)}
-  }
-
-  /* message */
-  .message{
-    display:none;margin-top:18px;font-size:20px;color:var(--text);font-weight:700;
-    background:linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.0));
-    padding:14px 20px;border-radius:12px;
-    animation: textFade .9s ease forwards .15s;
-  }
-  @keyframes textFade{
-    from{opacity:0; transform:translateY(10px) scale(.98)}
-    to{opacity:1; transform:translateY(0) scale(1)}
-  }
-
-  /* petals */
-  .petal {
-    position:fixed;left:50%;top:-10px;pointer-events:none;
-    width:18px;height:24px;border-radius:50% 50% 40% 40%;
-    background: linear-gradient(180deg,#ffd6e6,#ffbcd1);
-    opacity:0.95;transform-origin:center top;z-index:6;
-    filter: drop-shadow(0 4px 6px rgba(150,50,100,0.15));
-    animation: fall linear forwards;
-  }
-  @keyframes fall {
-    to {
-      transform: translate3d(var(--tx, 0px), 110vh, var(--tz, 0px)) rotate(var(--rot, 360deg)) scale(var(--scale,1));
-      opacity: 0.02;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</title>
+  <style>
+    :root {
+      --bg1: #fff5f8;
+      --bg2: #ffe9f2;
+      --accent: #ff3b7a;
+      --rosegold: #d28a7a;
+      --text: #7a0b3a;
     }
-  }
-
-  /* small UI footer */
-  .footer{margin-top:14px;color:#8a335b;font-size:13px}
-
-  /* responsive */
-  @media (max-width:520px){
-    .card{padding:20px}
-    .bouquet{width:86%}
-    .message{font-size:18px}
-  }
-</style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Helvetica, Arial;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .card {
+      width: 100%; max-width: 900px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 12px 40px rgba(160,60,120,0.12);
+      text-align: center;
+      position: relative;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .subtitle {
+      margin: 0 0 22px;
+      color: #9b3a66;
+      font-weight: 500;
+    }
+    .open-btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      padding: 16px 28px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, var(--accent), #ff6aa8);
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(255,90,150,0.18);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .open-btn:hover {
+      transform: scale(1.04);
+    }
+    .open-btn:active {
+      transform: translateY(2px) scale(.99);
+    }
+    .reveal {
+      margin-top: 30px;
+      display: none;
+      align-items: center;
+      flex-direction: column;
+    }
+    .bouquet {
+      width: 350px; max-width: 70%;
+      border-radius: 16px;
+      box-shadow: 0 14px 46px rgba(200,80,130,0.18);
+      transform-origin: center center;
+      animation: bouquetPop .7s cubic-bezier(.2,.9,.3,1) forwards;
+    }
+    @keyframes bouquetPop {
+      from { opacity: 0; transform: scale(.6) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .pulse {
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.05); }
+      60% { transform: scale(0.98); }
+      100% { transform: scale(1); }
+    }
+    .message {
+      display: none;
+      margin-top: 24px;
+      font-size: 22px;
+      color: var(--text);
+      font-weight: 700;
+      background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      padding: 16px 22px;
+      border-radius: 14px;
+      animation: textFade .9s ease forwards .15s;
+    }
+    @keyframes textFade {
+      from { opacity: 0; transform: translateY(12px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .petal {
+      position: fixed;
+      left: 50%;
+      top: -10px;
+      pointer-events: none;
+      width: 20px; height: 26px;
+      border-radius: 50% 50% 40% 40%;
+      background: linear-gradient(180deg, #ffd6e6, #ffbcd1);
+      opacity: 0.9;
+      transform-origin: center top;
+      z-index: 6;
+      animation: fall linear forwards;
+      filter: drop-shadow(0 4px 6px rgba(150,50,100,0.15));
+    }
+    @keyframes fall {
+      to {
+        transform: translate3d(var(--tx,0px), 110vh, var(--tz,0px)) rotate(var(--rot,360deg)) scale(var(--scale,1));
+        opacity: 0.02;
+      }
+    }
+    .footer {
+      margin-top: 18px;
+      color: #8a335b;
+      font-size: 14px;
+    }
+    @media (max-width: 520px) {
+      .card { padding: 20px; }
+      .bouquet { width: 86%; }
+      .message { font-size: 18px; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="card" role="main" aria-labelledby="title">
-  <h1 id="title">เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
-  <p class="subtitle">กดแล้วฟังเพลง แล้วรับช่อดอกไม้จากใจของเค้า 🌸</p>
-
-  <!-- OPEN BUTTON -->
-  <button class="open-btn" id="openBtn">กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
-
-  <!-- REVEAL AREA -->
-  <div class="reveal" id="reveal">
-    <!-- Bouquet image: replace IMAGE_URL with your direct image link (i.imgur.com/xxxxx.png) -->
-    <img id="bouquetImg" class="bouquet pulse" src="IMAGE_URL" alt="ช่อดอกไม้สีชมพู">
-    <div class="message" id="msg">
-      ขอโทษนะครับที่ทำให้พี่มะนาวเสียใจ<br>
-      เค้ารักพี่มะนาวไม่แพ้ใครเลยนะ 💖
+  <div class="card" role="main" aria-labelledby="title">
+    <h1 id="title">เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
+    <p class="subtitle">กดแล้วฟังเพลง แล้วรับช่อดอกไม้จากใจของเค้า 🌸</p>
+    <button class="open-btn" id="openBtn">กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
+    <div class="reveal" id="reveal">
+      <img id="bouquetImg" class="bouquet pulse" src="https://i.imgur.com/REPLACE_THIS_WITH_YOUR_IMAGE.png" alt="ช่อดอกไม้สีชมพู">
+      <div class="message" id="msg">
+        ขอโทษนะครับที่ทำให้พี่มะนาวเสียใจ<br>
+        เค้ารักพี่มะนาวไม่แพ้ใครเลยนะ 💖
+      </div>
     </div>
+    <div class="footer">เปิดมาแล้วอย่าลืมบอกรักพี่มะนาวด้วยนะ ❤️</div>
   </div>
 
-  <div class="footer">เปิดมาแล้วอย่าลืมบอกรักพี่มะนาวด้วยนะ ❤️</div>
-</div>
+  <audio id="bgAudio" src="https://files.catbox.moe/xstwaf.mp3" preload="auto"></audio>
 
-<!-- Hidden iframe for YouTube (autoplay on click via JS)
-     Replace YT_ID with the video id (s1nlIafxVYQ). start=63 (1:03). -->
-<iframe id="ytplayer" src="" style="display:none" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <script>
+    const IMAGE_URL = "https://i.imgur.com/Y6XfHBg.jpeg"; // replace with your direct image link
+    document.getElementById('bouquetImg').src = IMAGE_URL;
 
-<script>
-/* -------------------------
-  CONFIG: Replace the placeholders below:
-  - IMAGE_URL: direct link to your image (e.g. https://i.imgur.com/AbCdEf1.png)
-  - YT_ID: the YouTube video id (for your link it's s1nlIafxVYQ)
-  - START_SEC: start second (63)
--------------------------*/
-const IMAGE_URL = "https://i.imgur.com/Y6XfHBg.jpeg";
-const YT_ID = "s1nlIafxVYQ";
-const START_SEC = 63;
+    const btn = document.getElementById('openBtn');
+    const reveal = document.getElementById('reveal');
+    const msg = document.getElementById('msg');
+    const audio = document.getElementById('bgAudio');
+    let played = false;
 
-/* Apply image if provided */
-document.getElementById('bouquetImg').src = IMAGE_URL;
+    btn.addEventListener('click', () => {
+      if (played) return;
+      played = true;
 
-/* button behavior */
-const btn = document.getElementById('openBtn');
-const reveal = document.getElementById('reveal');
-const msg = document.getElementById('msg');
-const yt = document.getElementById('ytplayer');
+      btn.style.transition = 'opacity .3s';
+      btn.style.opacity = 0;
+      setTimeout(()=> btn.style.display = 'none', 400);
 
-let played = false;
-btn.addEventListener('click', () => {
-  if(played) return;
-  played = true;
+      reveal.style.display = 'flex';
 
-  // hide button
-  btn.style.transition = 'opacity .25s'; btn.style.opacity = '0';
-  setTimeout(()=> btn.style.display = 'none', 300);
+      setTimeout(()=> {
+        msg.style.display = 'block';
+      }, 700);
 
-  // reveal content
-  reveal.style.display = 'flex';
+      audio.play().catch(err => {
+        console.warn("Autoplay failed:", err);
+      });
 
-  // show message after a short delay
-  setTimeout(()=> { msg.style.display = 'block'; }, 800);
+      startPetals(30);
+    });
 
-  // show and play youtube iframe (autoplay from START_SEC)
-  // Using &start= and autoplay=1, modestbranding, controls=0
-  const src = `https://www.youtube.com/embed/${YT_ID}?start=${START_SEC}&autoplay=1&controls=0&rel=0&modestbranding=1&iv_load_policy=3`;
-  yt.src = src;
-  yt.style.display = 'block';
+    function startPetals(count){
+      const colors = [
+        'linear-gradient(180deg,#ffd6e6,#ffbcd1)',
+        'linear-gradient(180deg,#ffd0e7,#ff9fcf)',
+        'linear-gradient(180deg,#ffe6f2,#ffc6e3)'
+      ];
+      for(let i=0; i<count; i++){
+        const pet = document.createElement('div');
+        pet.className = 'petal';
+        const x = Math.floor(Math.random()*120) - 10;
+        const tx = (Math.random()*140 - 70) + 'vw';
+        const rot = Math.floor(Math.random()*720) + 'deg';
+        const dur = (5 + Math.random()*7).toFixed(2) + 's';
+        const delay = (Math.random()*1.8).toFixed(2) + 's';
+        const scale = (0.7 + Math.random()*1.1).toFixed(2);
 
-  // generate falling petals
-  startPetals(28);
-});
+        pet.style.left = Math.floor(Math.random()*100) + 'vw';
+        pet.style.top  = '-6vh';
+        pet.style.background = colors[Math.floor(Math.random()*colors.length)];
+        pet.style.width  = (12 + Math.random()*18) + 'px';
+        pet.style.height = (14 + Math.random()*26) + 'px';
+        pet.style.opacity = (0.7 + Math.random()*0.3);
+        pet.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`;
+        pet.style.animationDuration = dur;
+        pet.style.animationDelay = delay;
+        pet.style.setProperty('--tx', tx);
+        pet.style.setProperty('--rot', rot);
+        pet.style.setProperty('--scale', scale);
+        pet.style.zIndex = 6;
 
-/* petals generator */
-function startPetals(count){
-  const colors = [
-    'linear-gradient(180deg,#ffd6e6,#ffbcd1)',
-    'linear-gradient(180deg,#ffd0e7,#ff9fcf)',
-    'linear-gradient(180deg,#ffe6f2,#ffc6e3)'
-  ];
-  for(let i=0;i<count;i++){
-    const pet = document.createElement('div');
-    pet.className = 'petal';
-    // random start horizontal offset
-    const x = Math.floor(Math.random()*120) - 10;
-    const tx = (Math.random()*140 - 70) + 'vw';
-    const rot = Math.floor(Math.random()*720) + 'deg';
-    const dur = (5 + Math.random()*7).toFixed(2) + 's';
-    const delay = (Math.random()*1.8).toFixed(2) + 's';
-    const scale = (0.7 + Math.random()*1.1).toFixed(2);
+        document.body.appendChild(pet);
 
-    pet.style.left = Math.floor(Math.random()*100) + 'vw';
-    pet.style.top = '-6vh';
-    pet.style.background = colors[Math.floor(Math.random()*colors.length)];
-    pet.style.width = (12 + Math.random()*18) + 'px';
-    pet.style.height = (14 + Math.random()*26) + 'px';
-    pet.style.borderRadius = '50% 50% 40% 40%';
-    pet.style.opacity = (0.7 + Math.random()*0.3);
-    pet.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`;
-    pet.style.animationDuration = dur;
-    pet.style.animationDelay = delay;
-    pet.style.setProperty('--tx', tx);
-    pet.style.setProperty('--rot', rot);
-    pet.style.setProperty('--scale', scale);
-    pet.style.zIndex = 6;
+        setTimeout(()=>{
+          try { pet.remove(); } catch(e) {}
+        }, (parseFloat(dur)+parseFloat(delay)+0.9)*1000);
+      }
+      setTimeout(()=> startPetals(Math.max(8, Math.floor(count*0.6))), 1300);
+      setTimeout(()=> startPetals(Math.max(5, Math.floor(count*0.4))), 2900);
+    }
 
-    document.body.appendChild(pet);
+    btn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+    });
 
-    // cleanup after animation ends
-    setTimeout(()=> {
-      try { pet.remove(); } catch(e){}
-    }, (parseFloat(dur) + parseFloat(delay) + 0.9) * 1000);
-  }
-
-  // repeat a few waves
-  setTimeout(()=> startPetals(Math.max(8, Math.floor(count*0.6))), 1200);
-  setTimeout(()=> startPetals(Math.max(5, Math.floor(count*0.4))), 2800);
-}
-
-/* Accessibility: allow keyboard enter/space to trigger */
-btn.addEventListener('keydown', (e)=> {
-  if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-});
-</script>
-
+  </script>
 </body>
 </html>
-  
